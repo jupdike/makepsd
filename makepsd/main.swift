@@ -62,38 +62,58 @@ func writeImageFilePathsToPSD(files: [String], outputUrl: URL) {
     }
 }
 
+let enders = [".png", ".jpg", ".jpeg"]
+func doesEndWithImageExt(_ str: String) -> Bool {
+    let lower = str.lowercased()
+    for end in enders {
+        if lower.hasSuffix(end) {
+            return true
+        }
+    }
+    return false
+}
+
 func main() {
-    let arguments: Array<String> = Array<String>(CommandLine.arguments.dropFirst())
+    let wordArguments: Array<String> = Array<String>(CommandLine.arguments.dropFirst())
+        
+    // There is some sort of shortcoming in macOS Shortcuts when trying to pass filenames with spaces
+    // to work around this, we find the file extensions and use those as implicit delimiters to piece the
+    // long filenames back together. Terrible in theory, fine in practice. ONLY WORKS WITH .png .jpg and .jpeg (case-insensitive)
+    // also, assumes no double spaces(?!)
+    var args: [String] = []
+    var lastGroup: [String] = []
+
+    // OK we are finally ready to use the file path arguments
+    for word in wordArguments {
+        lastGroup.append(word)
+        if(doesEndWithImageExt(word)) {
+            let reconstitued = lastGroup.joined(separator: " ")
+            args.append(reconstitued)
+            lastGroup = []
+        }
+    }
+    guard lastGroup.count == 0 else {
+        print("Could not completely combine input words input full filename, had extra words with no file extension: \(lastGroup)")
+        return
+    }
+
     var firstFile: String? = nil
-    for arg in arguments {
-        print("got filename: \(arg)")
+    for arg in args {
+        //print("got filename: \(arg)")
         if firstFile == nil {
             firstFile = arg
             break
         }
     }
-
     if let first: String = firstFile {
         let ns = first as NSString
         let output = ns.deletingPathExtension.appending(".psd")
-        print("want to write output to: \(output)")
+        //print("want to write output to: \(output)")
         let outputUrl = URL(fileURLWithPath: output)
-        
-//        for fname in arguments {
-//            var contents: String? = nil
-//            do {
-//                try contents = String(contentsOf: URL(fileURLWithPath: fname))
-//            } catch {
-//                print("Problem trying to read contents of: \(fname)")
-//            }
-//            guard let str = contents else { continue }
-//            do {
-//                try str.write(to: outputUrl, atomically: true, encoding: String.Encoding.utf8)
-//            } catch {
-//                // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
-//            }
+//        for fname in args {
+//            print("INPUT FNAME: \(fname)")
 //        }
-        writeImageFilePathsToPSD(files: arguments, outputUrl: outputUrl)
+        writeImageFilePathsToPSD(files: args, outputUrl: outputUrl)
     }
 }
 
