@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A3D9D68B2BC8683500BD9F16 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D68A2BC8683500BD9F16 /* main.swift */; };
+		A3D9D6A22BC8BF5700BD9F16 /* NSDataPSDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D69B2BC8BF5700BD9F16 /* NSDataPSDAdditions.m */; };
+		A3D9D6A32BC8BF5700BD9F16 /* PSDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D69D2BC8BF5700BD9F16 /* PSDLayer.m */; };
+		A3D9D6A42BC8BF5700BD9F16 /* PSDWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D6A02BC8BF5700BD9F16 /* PSDWriter.m */; };
+		A3D9D6A72BC8BFA600BD9F16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D9D6A62BC8BFA600BD9F16 /* CoreGraphics.framework */; };
+		A3D9D6AA2BC8C7D500BD9F16 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D9D6A92BC8C7D500BD9F16 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,16 @@
 /* Begin PBXFileReference section */
 		A3D9D6872BC8683500BD9F16 /* makepsd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = makepsd; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D9D68A2BC8683500BD9F16 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A3D9D69A2BC8BF5700BD9F16 /* NSDataPSDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataPSDAdditions.h; sourceTree = "<group>"; };
+		A3D9D69B2BC8BF5700BD9F16 /* NSDataPSDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataPSDAdditions.m; sourceTree = "<group>"; };
+		A3D9D69C2BC8BF5700BD9F16 /* PSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDLayer.h; sourceTree = "<group>"; };
+		A3D9D69D2BC8BF5700BD9F16 /* PSDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDLayer.m; sourceTree = "<group>"; };
+		A3D9D69E2BC8BF5700BD9F16 /* PSDWriter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PSDWriter-Prefix.pch"; sourceTree = "<group>"; };
+		A3D9D69F2BC8BF5700BD9F16 /* PSDWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDWriter.h; sourceTree = "<group>"; };
+		A3D9D6A02BC8BF5700BD9F16 /* PSDWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDWriter.m; sourceTree = "<group>"; };
+		A3D9D6A62BC8BFA600BD9F16 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A3D9D6A82BC8C30500BD9F16 /* makepsd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "makepsd-Bridging-Header.h"; sourceTree = "<group>"; };
+		A3D9D6A92BC8C7D500BD9F16 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D9D6A72BC8BFA600BD9F16 /* CoreGraphics.framework in Frameworks */,
+				A3D9D6AA2BC8C7D500BD9F16 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +58,10 @@
 		A3D9D67E2BC8683500BD9F16 = {
 			isa = PBXGroup;
 			children = (
+				A3D9D6A12BC8BF5700BD9F16 /* PDFWriter */,
 				A3D9D6892BC8683500BD9F16 /* makepsd */,
 				A3D9D6882BC8683500BD9F16 /* Products */,
+				A3D9D6A52BC8BFA600BD9F16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +77,32 @@
 			isa = PBXGroup;
 			children = (
 				A3D9D68A2BC8683500BD9F16 /* main.swift */,
+				A3D9D6A82BC8C30500BD9F16 /* makepsd-Bridging-Header.h */,
 			);
 			path = makepsd;
+			sourceTree = "<group>";
+		};
+		A3D9D6A12BC8BF5700BD9F16 /* PDFWriter */ = {
+			isa = PBXGroup;
+			children = (
+				A3D9D69A2BC8BF5700BD9F16 /* NSDataPSDAdditions.h */,
+				A3D9D69B2BC8BF5700BD9F16 /* NSDataPSDAdditions.m */,
+				A3D9D69C2BC8BF5700BD9F16 /* PSDLayer.h */,
+				A3D9D69D2BC8BF5700BD9F16 /* PSDLayer.m */,
+				A3D9D69E2BC8BF5700BD9F16 /* PSDWriter-Prefix.pch */,
+				A3D9D69F2BC8BF5700BD9F16 /* PSDWriter.h */,
+				A3D9D6A02BC8BF5700BD9F16 /* PSDWriter.m */,
+			);
+			path = PDFWriter;
+			sourceTree = "<group>";
+		};
+		A3D9D6A52BC8BFA600BD9F16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3D9D6A92BC8C7D500BD9F16 /* AppKit.framework */,
+				A3D9D6A62BC8BFA600BD9F16 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D9D6A22BC8BF5700BD9F16 /* NSDataPSDAdditions.m in Sources */,
+				A3D9D6A32BC8BF5700BD9F16 /* PSDLayer.m in Sources */,
+				A3D9D6A42BC8BF5700BD9F16 /* PSDWriter.m in Sources */,
 				A3D9D68B2BC8683500BD9F16 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +298,7 @@
 				DEVELOPMENT_TEAM = 8E68C7Y65V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "makepsd/makepsd-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -263,6 +310,7 @@
 				DEVELOPMENT_TEAM = 8E68C7Y65V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "makepsd/makepsd-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
